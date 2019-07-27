@@ -7,6 +7,10 @@
 #define pragma once
 #define SLAVE_ADDRESS       0x99
 #define XMIT_ADDRESS        0x99 
-#define RECEICVE_ADRESS     0x9A
-#define I2C_RECEIVER        5678
+#define RECEIVE_ADdRESS     0x9A
+#define I2C_DUMMY_TARGET    5678
 #define VERSION             "0.0.01"
+
+//Function Definitions
+void setup(void);
+void loop(void);

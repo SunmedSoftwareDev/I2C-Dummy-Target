@@ -1,5 +1,5 @@
 #include "application.h"
-#include "I2C-Receiver.h"
+#include "I2C-Dummy-Target.h"
 /*
  * Project I2C-Receiver
  * Description:  Main code for I2C slave for r-90 debug code
@@ -7,7 +7,7 @@
  * Date: 7/23/19
  */
 
-PRODUCT_ID(I2C_RECEIVER); //This is the number found in the console
+PRODUCT_ID(I2C_DUMMY_TARGET); //This is the number found in the console
 PRODUCT_VERSION(0); // Increase this number each time  FW is uploaded to the console
 
 
@@ -28,19 +28,19 @@ ApplicationWatchdog wd(60000, System.reset,1024);
 
 
 // setup() runs once, when the device is first turned on.
-void setup();
-void loop();
+
 
 void setup() {
   // Put initialization like pinMode and begin functions here.
   Serial.begin(921600);
-  Wire.begin(SLAVE_ADDRESS);
+  Wire.begin();
 }
 
 // loop() runs over and over again, as quickly as it can execute.
 void loop() {
+
   // The core of your code will likely live here.
-  delay(1);
+  delay(100);
   
 
 }

@@ -30,3 +30,10 @@
 *.exe
 *.out
 *.app
+target/I2C-Dummy-Target.bin.no_crc
+target/I2C-Dummy-Target.bin
+target/I2C-Dummy-Target.elf
+target/I2C-Dummy-Target.hex
+target/I2C-Dummy-Target.lst
+target/I2C-Dummy-Target.map
+target/I2C-Dummy-Target.bin.crc_block
