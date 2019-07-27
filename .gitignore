@@ -37,3 +37,4 @@ target/I2C-Debugger.hex
 target/I2C-Debugger.lst
 target/I2C-Debugger.map
 target/I2C-Debugger.bin.crc_block
+target/module_user_memory.ld

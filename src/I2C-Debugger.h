@@ -1,5 +1,5 @@
 /*
- * Project I2C-Debugger
+ * Project: I2C-Debugger
  * Description:  Main code for I2C slave for r-90 debug code
  * Author:  JJ Fenstermaker
  * Date: 7/23/19

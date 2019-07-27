@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "C:/Users/JJ/.particle/toolchains/deviceOS/1.3.0-rc.1/firmware-1.3.0-rc.1/user/inc",
+                "C:/Users/JJ/.particle/toolchains/deviceOS/1.3.0-rc.1/firmware-1.3.0-rc.1/system/inc"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "J:\\msys64\\mingw64\\bin\\gcc.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64",
+            "configurationProvider": "particle.particle-vscode-core"
+        }
+    ],
+    "version": 4
+}
