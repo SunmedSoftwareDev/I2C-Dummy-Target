@@ -1,4 +1,5 @@
 {
     "particle.firmwareVersion": "1.3.0-rc.1",
-    "particle.targetPlatform": "argon"
+    "particle.targetPlatform": "argon",
+    "particle.targetDevice": "R90_debugger_1"
 }
