@@ -23,8 +23,8 @@ SYSTEM_MODE(
 STARTUP(System.enableFeature(FEATURE_RESET_INFO));
 
 // reset the system after 60 seconds if the application is unresponsive
-ApplicationWatchdog wd(60000, System.reset,1024);
-
+ApplicationWatchdog wd(6000, System.reset,1024);
+int8_t heartBeatCounter = 0;
 
 
 
@@ -33,6 +33,10 @@ ApplicationWatchdog wd(60000, System.reset,1024);
 void setup() {
   // Put initialization like pinMode and begin functions here.
   Serial.begin(921600);
+  delay(500);
+
+  Wire.setSpeed(CLOCK_SPEED_100KHZ);
+  Wire.stretchClock(true);
   Wire.begin(DEBUGGER_SLAVE_ADDRESS);
   Wire.onReceive(receiveEvent); // register event
 }
@@ -41,8 +45,16 @@ void setup() {
 void loop() {
   // The core of your code will likely live here.
   delay(100);
+  if(heartBeatCounter >= 100){
+    Serial.println("Heartbeat");
+    heartBeatCounter = 0;
+  } 
+  else
+  {
+    heartBeatCounter+=1;
+  }
   
-
+  wd.checkin();
 }
 // function that executes whenever data is received from master
 // this function is registered as an event, see setup()
