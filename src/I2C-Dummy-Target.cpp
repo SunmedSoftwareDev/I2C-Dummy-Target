@@ -16,7 +16,7 @@ String fwrev = VERSION; // This is the value checked to determine if an update i
 //system_thread enables the dual processing
 SYSTEM_THREAD(ENABLED);
 //must call Particle.connect() to connect to cloud in manual or semi-auto
-SYSTEM_MODE(SEMI_AUTOMATIC);
+SYSTEM_MODE(AUTOMATIC);
 
 //Allows for the reset reason to be used
 STARTUP(System.enableFeature(FEATURE_RESET_INFO));
