@@ -10,8 +10,9 @@
 #define RECEIVER_ADRRESS             0x9A
 #define I2C_DEBUGGER                 1234
 #define I2C_RECEIVER                 5678
-#define VERSION                      "0.0.01"
+#define VERSION                      "0.0.02"
 
 // Function Definitions
 void setup(void);
 void loop(void);
+void receiveEvent(int);

@@ -16,7 +16,8 @@ String fwrev = VERSION; // This is the value checked to determine if an update i
 //system_thread enables the dual processing
 SYSTEM_THREAD(ENABLED);
 //must call Particle.connect() to connect to cloud in manual or semi-auto
-SYSTEM_MODE(SEMI_AUTOMATIC);
+SYSTEM_MODE(
+  AUTOMATIC);
 
 //Allows for the reset reason to be used
 STARTUP(System.enableFeature(FEATURE_RESET_INFO));
@@ -33,12 +34,23 @@ void setup() {
   // Put initialization like pinMode and begin functions here.
   Serial.begin(921600);
   Wire.begin(DEBUGGER_SLAVE_ADDRESS);
+  Wire.onReceive(receiveEvent); // register event
 }
 
 // loop() runs over and over again, as quickly as it can execute.
 void loop() {
   // The core of your code will likely live here.
-  delay(1);
+  delay(100);
   
 
+}
+// function that executes whenever data is received from master
+// this function is registered as an event, see setup()
+void receiveEvent(int howMany) {
+  while(1 < Wire.available()) { // loop through all but the last
+    char c = Wire.read();       // receive byte as a character
+    Serial.print(c);            // print the character
+  }
+  int x = Wire.read();          // receive byte as an integer
+  Serial.println(x);            // print the integer
 }
