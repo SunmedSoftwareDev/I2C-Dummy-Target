@@ -37,3 +37,6 @@ target/I2C-Dummy-Target.hex
 target/I2C-Dummy-Target.lst
 target/I2C-Dummy-Target.map
 target/I2C-Dummy-Target.bin.crc_block
+target/I2C-Dummy-Target.dfu
+target/module_user_memory.ld
+target/I2C-Dummy-Target_fi.elf
