@@ -14,3 +14,4 @@
 //Function Definitions
 void setup(void);
 void loop(void);
+void requestEvent(void);

@@ -25,6 +25,8 @@ STARTUP(System.enableFeature(FEATURE_RESET_INFO));
 ApplicationWatchdog wd(60000, System.reset,1024);
 
 
+uint8_t heartBeatCounter = 0;
+uint16_t transmittedX = 0;
 
 
 // setup() runs once, when the device is first turned on.
@@ -33,14 +35,43 @@ ApplicationWatchdog wd(60000, System.reset,1024);
 void setup() {
   // Put initialization like pinMode and begin functions here.
   Serial.begin(921600);
+  delay(500);
+
+  Wire.setSpeed(CLOCK_SPEED_100KHZ);
+  Wire.stretchClock(true);
   Wire.begin();
+  Wire.onRequest(requestEvent); // register event
 }
 
 // loop() runs over and over again, as quickly as it can execute.
 void loop() {
 
   // The core of your code will likely live here.
-  delay(100);
+  delay(500);
   
+  // data transmission
+  Serial.printlnf("Transmitting x = %d", transmittedX);  
+  Wire.beginTransmission(SLAVE_ADDRESS ); // transmit to slave device #4
+  Wire.write("x is ");       // sends five bytes
+  Wire.write(transmittedX);             // sends one byte
+  Wire.endTransmission();    // stop transmitting
+  transmittedX ++;
 
+  if(heartBeatCounter >= 20){
+    Serial.println("Dummy Target Heartbeat");
+    heartBeatCounter = 0;
+  } 
+  else
+  {
+    heartBeatCounter+=1;
+  }
+  
+  wd.checkin();
 }
+
+// function that executes whenever data is requested by master
+// this function is registered as an event, see setup()
+void requestEvent() {
+  Wire.write("hello ");         // respond with message of 6 bytes as expected by master
+}
+
