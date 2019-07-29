@@ -16,3 +16,4 @@
 void setup(void);
 void loop(void);
 void receiveEvent(int);
+void requestEvent(void);

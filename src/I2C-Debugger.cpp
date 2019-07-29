@@ -38,15 +38,18 @@ void setup() {
   Wire.setSpeed(CLOCK_SPEED_100KHZ);
   Wire.stretchClock(true);
   Wire.begin(DEBUGGER_SLAVE_ADDRESS);
-  Wire.onReceive(receiveEvent); // register event
+
+  Wire.onReceive(receiveEvent); // register event  
+  Wire.onRequest(requestEvent); // register event
+
 }
 
 // loop() runs over and over again, as quickly as it can execute.
 void loop() {
   // The core of your code will likely live here.
-  delay(100);
-  if(heartBeatCounter >= 100){
-    Serial.println("Heartbeat");
+  delay(500);
+  if(heartBeatCounter >= 20){
+    Serial.println("Debugger Heartbeat");
     heartBeatCounter = 0;
   } 
   else
@@ -63,6 +66,14 @@ void receiveEvent(int howMany) {
     char c = Wire.read();       // receive byte as a character
     Serial.print(c);            // print the character
   }
-  int x = Wire.read();          // receive byte as an integer
-  Serial.println(x);            // print the integer
+  int16_t x = Wire.read();          // receive byte as an integer
+  Serial.printlnf("%d",x);            // print the integer
 }
+
+// function that executes whenever data is requested by master
+// this function is registered as an event, see setup()
+void requestEvent() {
+
+  Wire.write("hello ");         // respond with message of 6 bytes as expected by master
+}
+
