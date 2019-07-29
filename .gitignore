@@ -40,3 +40,4 @@ target/I2C-Debugger.bin.crc_block
 target/module_user_memory.ld
 target/I2C-Debugger_fi.elf
 target/I2C-Debugger.dfu
+target/I2C-Debugger.bin.pre_crc
